@@ -2,6 +2,8 @@ package com.example.demodatabase.Controller;
 
 import java.util.List;
 
+import com.example.demodatabase.Entity.User;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +42,13 @@ public class home {
     }
 
     @RequestMapping(value = "/addPerson", method = RequestMethod.GET)
-    public String addPersonForm(Model model) {
+    public String addPersonForm(Model model, HttpSession session) {
+
+        User user = (User)session.getAttribute("user");
+        if (user == null) return "redirect:/login";
+        if (user.getRole() != 0){
+            return "redirect:/list";
+        }
         model.addAttribute("personForm", new Person());
         return "addPerson";
     }
