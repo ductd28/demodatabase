@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách người dùng</title>
+</head>
+<body>
+
+<h1>Danh sách người dùng</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Tuổi</th>
+            <th>Lương</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="person : ${person}">
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.age}"></td>
+            <td th:text="${person.salary}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

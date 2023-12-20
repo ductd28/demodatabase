@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm người dùng</title>
+</head>
+<body>
+
+<h1>Create person:</h1>
+<br/>
+<form th:action="@{addPerson}" th:object = "${personForm}" method = POST>
+	Name: <input type = "text" th:field="*{name}">
+	<br/>
+	Age: <input type = "number" min="18" max="100" step ="1" th:field = "*{age}">
+	<br/>
+	Salary: <input type = "number" min="0" max="10000000000" step="1" th:field = "*{salary}">
+	<br/>
+	<input type = "submit" value = "Create">
+</form>
+
+</body>
+</html>
